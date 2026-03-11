@@ -2,7 +2,7 @@ import UIKit
 
 public final class HStack: UIStackView {
     
-    @inlinable
+    @inline(__always)
     public init(
         alignment: UIStackView.Alignment = .fill,
         distribution: UIStackView.Distribution = .fill,
@@ -23,7 +23,7 @@ public final class HStack: UIStackView {
         }
     }
     
-    @inlinable
+    @inline(__always)
     public init(
         spacing: CGFloat,
         alignment: UIStackView.Alignment = .fill,
@@ -46,7 +46,7 @@ public final class HStack: UIStackView {
         fatalError()
     }
 
-    @inlinable
+    @inline(__always)
     public override var axis: NSLayoutConstraint.Axis {
         get {
             return .horizontal

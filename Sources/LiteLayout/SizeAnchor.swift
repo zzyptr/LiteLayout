@@ -1,12 +1,11 @@
 import UIKit
 
 public struct SizeAnchor {
-    @usableFromInline
+    
     let width: NSLayoutDimension
-    @usableFromInline
     let height: NSLayoutDimension
     
-    @usableFromInline
+    @inline(__always)
     init(width: NSLayoutDimension, height: NSLayoutDimension) {
         self.width = width
         self.height = height
@@ -17,13 +16,13 @@ public struct SizeConstraint {
     public let width: NSLayoutConstraint
     public let height: NSLayoutConstraint
     
-    @usableFromInline
+    @inline(__always)
     init(width: NSLayoutConstraint, height: NSLayoutConstraint) {
         self.width = width
         self.height = height
     }
     
-    @inlinable
+    @inline(__always)
     @discardableResult
     public func activate() -> SizeConstraint {
         width.isActive = true
@@ -31,7 +30,7 @@ public struct SizeConstraint {
         return self
     }
     
-    @inlinable
+    @inline(__always)
     @discardableResult
     public func activate(priority: UILayoutPriority) -> SizeConstraint {
         width.priority = priority
@@ -45,7 +44,7 @@ public struct SizeConstraint {
 extension SizeAnchor {
     
     /// `self == constant`
-    @inlinable
+    @inline(__always)
     public func equalTo(_ constant: CGSize) -> SizeConstraint {
         return SizeConstraint(
             width: width.equalTo(constant.width),
@@ -54,7 +53,7 @@ extension SizeAnchor {
     }
     
     /// `self >= constant`
-    @inlinable
+    @inline(__always)
     public func greaterThanOrEqualTo(_ constant: CGSize) -> SizeConstraint {
         return SizeConstraint(
             width: width.greaterThanOrEqualTo(constant.width),
@@ -63,7 +62,7 @@ extension SizeAnchor {
     }
     
     /// `self <= constant`
-    @inlinable
+    @inline(__always)
     public func lessThanOrEqualTo(_ constant: CGSize) -> SizeConstraint {
         return SizeConstraint(
             width: width.lessThanOrEqualTo(constant.width),
@@ -72,7 +71,7 @@ extension SizeAnchor {
     }
     
     /// `self == anchor * times + plus`
-    @inlinable
+    @inline(__always)
     public func equalTo(_ anchor: SizeAnchor, times: CGFloat = 1, plus: CGSize = .zero) -> SizeConstraint {
         return SizeConstraint(
             width: width.equalTo(anchor.width, times: times, plus: plus.width),
@@ -81,7 +80,7 @@ extension SizeAnchor {
     }
     
     /// `self >= anchor * times + plus`
-    @inlinable
+    @inline(__always)
     public func greaterThanOrEqualTo(_ anchor: SizeAnchor, times: CGFloat = 1, plus: CGSize = .zero) -> SizeConstraint {
         return SizeConstraint(
             width: width.greaterThanOrEqualTo(anchor.width, times: times, plus: plus.width),
@@ -90,7 +89,7 @@ extension SizeAnchor {
     }
     
     /// `self <= anchor * times + plus`
-    @inlinable
+    @inline(__always)
     public func lessThanOrEqualTo(_ anchor: SizeAnchor, times: CGFloat = 1, plus: CGSize = .zero) -> SizeConstraint {
         return SizeConstraint(
             width: width.lessThanOrEqualTo(anchor.width, times: times, plus: plus.width),
@@ -101,7 +100,7 @@ extension SizeAnchor {
 
 extension UIView {
     
-    @inlinable
+    @inline(__always)
     public var sizeAnchor: SizeAnchor {
         return SizeAnchor(width: widthAnchor, height: heightAnchor)
     }
@@ -109,7 +108,7 @@ extension UIView {
 
 extension UILayoutGuide {
     
-    @inlinable
+    @inline(__always)
     public var sizeAnchor: SizeAnchor {
         return SizeAnchor(width: widthAnchor, height: heightAnchor)
     }
@@ -117,12 +116,12 @@ extension UILayoutGuide {
 
 extension CGSize {
     
-    @inlinable
+    @inline(__always)
     public static func width(_ value: CGFloat) -> CGSize {
         return CGSize(width: value, height: 0)
     }
     
-    @inlinable
+    @inline(__always)
     public static func height(_ value: CGFloat) -> CGSize {
         return CGSize(width: 0, height: value)
     }

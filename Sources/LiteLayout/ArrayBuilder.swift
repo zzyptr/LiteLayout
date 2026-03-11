@@ -3,42 +3,42 @@ import UIKit
 @resultBuilder
 public class ArrayBuilder {
     
-    @inlinable
+    @inline(__always)
     public static func buildBlock(_ components: [UIView]...) -> [UIView] {
         return components.reduce([], +)
     }
     
-    @inlinable
+    @inline(__always)
     public static func buildExpression(_ expression: UIView) -> [UIView] {
         return [expression]
     }
     
-    @inlinable
+    @inline(__always)
     public static func buildExpression(_ expression: [UIView]) -> [UIView] {
         return expression
     }
     
-    @inlinable
+    @inline(__always)
     public static func buildOptional(_ component: [UIView]?) -> [UIView] {
         return component ?? []
     }
 
-    @inlinable
+    @inline(__always)
     public static func buildEither(first component: [UIView]) -> [UIView] {
         return component
     }
     
-    @inlinable
+    @inline(__always)
     public static func buildEither(second component: [UIView]) -> [UIView] {
         return component
     }
     
-    @inlinable
+    @inline(__always)
     public static func buildArray(_ components: [[UIView]]) -> [UIView] {
         return components.reduce([], +)
     }
 
-    @inlinable
+    @inline(__always)
     public static func buildLimitedAvailability(_ component: [UIView]) -> [UIView] {
         return component
     }
@@ -47,7 +47,7 @@ public class ArrayBuilder {
 @resultBuilder
 public final class XArrayBuilder: ArrayBuilder {
     
-    @inlinable
+    @inline(__always)
     public static func buildExpression(_ expression: Spacer) -> [UIView] {
         if expression.length == UIView.noIntrinsicMetric {
             return [Unsized()]
@@ -59,7 +59,7 @@ public final class XArrayBuilder: ArrayBuilder {
 @resultBuilder
 public final class YArrayBuilder: ArrayBuilder {
     
-    @inlinable
+    @inline(__always)
     public static func buildExpression(_ expression: Spacer) -> [UIView] {
         if expression.length == UIView.noIntrinsicMetric {
             return [Unsized()]

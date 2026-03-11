@@ -2,7 +2,7 @@ import UIKit
 
 public final class VStack: UIStackView {
     
-    @inlinable
+    @inline(__always)
     public init(
         alignment: UIStackView.Alignment = .fill,
         distribution: UIStackView.Distribution = .fill,
@@ -24,7 +24,7 @@ public final class VStack: UIStackView {
         }
     }
     
-    @inlinable
+    @inline(__always)
     public init(
         spacing: CGFloat,
         alignment: UIStackView.Alignment = .fill,
@@ -48,7 +48,7 @@ public final class VStack: UIStackView {
         fatalError()
     }
     
-    @inlinable
+    @inline(__always)
     public override var axis: NSLayoutConstraint.Axis {
         get {
             return .vertical

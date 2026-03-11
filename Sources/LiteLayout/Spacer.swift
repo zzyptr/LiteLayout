@@ -2,36 +2,32 @@ import UIKit
 
 public struct Spacer {
     
-    @usableFromInline
     let length: CGFloat
     
-    @inlinable
+    @inline(__always)
     public init() {
         self.length = UIView.noIntrinsicMetric
     }
     
-    @inlinable
+    @inline(__always)
     public init(length: CGFloat) {
         self.length = length
     }
 }
 
-@usableFromInline
 final class Sized: UIView {
     
-    @usableFromInline
     let width: CGFloat
-    @usableFromInline
     let height: CGFloat
     
-    @usableFromInline
+    @inline(__always)
     init(width: CGFloat) {
         self.width = width
         self.height = UIView.noIntrinsicMetric
         super.init(frame: .zero)
     }
     
-    @usableFromInline
+    @inline(__always)
     init(height: CGFloat) {
         self.width = UIView.noIntrinsicMetric
         self.height = height
@@ -42,11 +38,10 @@ final class Sized: UIView {
         fatalError()
     }
     
-    @inlinable
+    @inline(__always)
     override var intrinsicContentSize: CGSize {
         return CGSize(width: width, height: height)
     }
 }
 
-@usableFromInline
 final class Unsized: UIView {}

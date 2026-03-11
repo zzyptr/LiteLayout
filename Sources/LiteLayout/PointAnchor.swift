@@ -1,12 +1,11 @@
 import UIKit
 
 public struct PointAnchor {
-    @usableFromInline
+    
     let x: NSLayoutXAxisAnchor
-    @usableFromInline
     let y: NSLayoutYAxisAnchor
     
-    @usableFromInline
+    @inline(__always)
     init(x: NSLayoutXAxisAnchor, y: NSLayoutYAxisAnchor) {
         self.x = x
         self.y = y
@@ -18,13 +17,13 @@ public struct PointConstraint {
     public let x: NSLayoutConstraint
     public let y: NSLayoutConstraint
 
-    @usableFromInline
+    @inline(__always)
     init(x: NSLayoutConstraint, y: NSLayoutConstraint) {
         self.x = x
         self.y = y
     }
     
-    @inlinable
+    @inline(__always)
     @discardableResult
     public func activate() -> PointConstraint {
         x.isActive = true
@@ -32,7 +31,7 @@ public struct PointConstraint {
         return self
     }
     
-    @inlinable
+    @inline(__always)
     @discardableResult
     public func activate(priority: UILayoutPriority) -> PointConstraint {
         x.priority = priority
@@ -46,7 +45,7 @@ public struct PointConstraint {
 extension PointAnchor {
     
     /// `self == anchor + plus`
-    @inlinable
+    @inline(__always)
     public func equalTo(_ anchor: PointAnchor, plus: CGPoint = .zero) -> PointConstraint {
         return PointConstraint(
             x: x.equalTo(anchor.x, plus: plus.x),
@@ -55,7 +54,7 @@ extension PointAnchor {
     }
     
     /// `self >= anchor + plus`
-    @inlinable
+    @inline(__always)
     public func greaterThanOrEqualTo(_ anchor: PointAnchor, plus: CGPoint = .zero) -> PointConstraint {
         return PointConstraint(
             x: x.greaterThanOrEqualTo(anchor.x, plus: plus.x),
@@ -64,7 +63,7 @@ extension PointAnchor {
     }
     
     /// `self <= anchor + plus`
-    @inlinable
+    @inline(__always)
     public func lessThanOrEqualTo(_ anchor: PointAnchor, plus: CGPoint = .zero) -> PointConstraint {
         return PointConstraint(
             x: x.lessThanOrEqualTo(anchor.x, plus: plus.x),
@@ -72,7 +71,7 @@ extension PointAnchor {
         )
     }
     
-    @inlinable
+    @inline(__always)
     func anchorWithOffset(to anchor: PointAnchor) -> SizeAnchor {
         return SizeAnchor(
             width: x.anchorWithOffset(to: anchor.x),
@@ -83,27 +82,27 @@ extension PointAnchor {
 
 extension UIView {
     
-    @inlinable
+    @inline(__always)
     public var topLeadingAnchor: PointAnchor {
         return PointAnchor(x: leadingAnchor, y: topAnchor)
     }
     
-    @inlinable
+    @inline(__always)
     public var topTrailingAnchor: PointAnchor {
         return PointAnchor(x: trailingAnchor, y: topAnchor)
     }
     
-    @inlinable
+    @inline(__always)
     public var centerAnchor: PointAnchor {
         return PointAnchor(x: centerXAnchor, y: centerYAnchor)
     }
     
-    @inlinable
+    @inline(__always)
     public var bottomTrailingAnchor: PointAnchor {
         return PointAnchor(x: trailingAnchor, y: bottomAnchor)
     }
     
-    @inlinable
+    @inline(__always)
     public var bottomLeadingAnchor: PointAnchor {
         return PointAnchor(x: leadingAnchor, y: bottomAnchor)
     }
@@ -111,27 +110,27 @@ extension UIView {
 
 extension UILayoutGuide {
     
-    @inlinable
+    @inline(__always)
     public var topLeadingAnchor: PointAnchor {
         return PointAnchor(x: leadingAnchor, y: topAnchor)
     }
     
-    @inlinable
+    @inline(__always)
     public var topTrailingAnchor: PointAnchor {
         return PointAnchor(x: trailingAnchor, y: topAnchor)
     }
     
-    @inlinable
+    @inline(__always)
     public var centerAnchor: PointAnchor {
         return PointAnchor(x: centerXAnchor, y: centerYAnchor)
     }
     
-    @inlinable
+    @inline(__always)
     public var bottomTrailingAnchor: PointAnchor {
         return PointAnchor(x: trailingAnchor, y: bottomAnchor)
     }
     
-    @inlinable
+    @inline(__always)
     public var bottomLeadingAnchor: PointAnchor {
         return PointAnchor(x: leadingAnchor, y: bottomAnchor)
     }
@@ -139,12 +138,12 @@ extension UILayoutGuide {
 
 extension CGPoint {
     
-    @inlinable
+    @inline(__always)
     public static func x(_ value: CGFloat) -> CGPoint {
         return CGPoint(x: value, y: 0)
     }
     
-    @inlinable
+    @inline(__always)
     public static func y(_ value: CGFloat) -> CGPoint {
         return CGPoint(x: 0, y: value)
     }
