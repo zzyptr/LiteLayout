@@ -5,8 +5,8 @@ import PackageDescription
 let package = Package(
     name: "LiteLayout",
     platforms: [
-        .iOS(.v13),
-        .tvOS(.v13),
+        .iOS(.v12),
+        .tvOS(.v12),
         .visionOS(.v1),
         .macCatalyst(.v13),
     ],
