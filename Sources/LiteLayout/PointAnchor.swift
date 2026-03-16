@@ -135,16 +135,3 @@ extension UILayoutGuide {
         return PointAnchor(x: leadingAnchor, y: bottomAnchor)
     }
 }
-
-extension CGPoint {
-    
-    @inline(__always)
-    public static func x(_ value: CGFloat) -> CGPoint {
-        return CGPoint(x: value, y: 0)
-    }
-    
-    @inline(__always)
-    public static func y(_ value: CGFloat) -> CGPoint {
-        return CGPoint(x: 0, y: value)
-    }
-}

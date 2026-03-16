@@ -43,7 +43,7 @@ extension NSLayoutYAxisAnchor {
     
     /// `self == anchor + plus`
     @inline(__always)
-    public func equalTo(_ anchor: NSLayoutYAxisAnchor, plus: CGFloat = 0) -> NSLayoutConstraint {
+    public func equalTo(_ anchor: NSLayoutYAxisAnchor, plus: CGFloat = 0) -> NSLayoutConstraint {   
         return constraint(equalTo: anchor, constant: plus)
     }
     

@@ -113,16 +113,3 @@ extension UILayoutGuide {
         return SizeAnchor(width: widthAnchor, height: heightAnchor)
     }
 }
-
-extension CGSize {
-    
-    @inline(__always)
-    public static func width(_ value: CGFloat) -> CGSize {
-        return CGSize(width: value, height: 0)
-    }
-    
-    @inline(__always)
-    public static func height(_ value: CGFloat) -> CGSize {
-        return CGSize(width: 0, height: value)
-    }
-}
