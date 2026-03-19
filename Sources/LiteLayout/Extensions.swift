@@ -7,7 +7,6 @@ extension UIView: Applyable {}
 extension Applyable where Self: UIView {
     
     @inline(__always)
-    @discardableResult
     public func apply(_ closure: (_ this: Self) -> Void) -> Self {
         closure(self)
         return self
