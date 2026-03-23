@@ -25,19 +25,9 @@ public struct PointConstraint {
     
     @inline(__always)
     @discardableResult
-    public func activate() -> PointConstraint {
-        x.isActive = true
-        y.isActive = true
-        return self
-    }
-    
-    @inline(__always)
-    @discardableResult
-    public func activate(priority: UILayoutPriority) -> PointConstraint {
-        x.priority = priority
-        x.isActive = true
-        y.priority = priority
-        y.isActive = true
+    public func activate(priority: UILayoutPriority = .required) -> PointConstraint {
+        x.activate(priority: priority)
+        y.activate(priority: priority)
         return self
     }
 }

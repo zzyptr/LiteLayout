@@ -34,8 +34,9 @@ final class Sized: UIView {
         super.init(frame: .zero)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError()
+        return nil
     }
     
     @inline(__always)

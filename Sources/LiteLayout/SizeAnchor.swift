@@ -24,19 +24,9 @@ public struct SizeConstraint {
     
     @inline(__always)
     @discardableResult
-    public func activate() -> SizeConstraint {
-        width.isActive = true
-        width.isActive = true
-        return self
-    }
-    
-    @inline(__always)
-    @discardableResult
-    public func activate(priority: UILayoutPriority) -> SizeConstraint {
-        width.priority = priority
-        height.priority = priority
-        width.isActive = true
-        height.isActive = true
+    public func activate(priority: UILayoutPriority = .required) -> SizeConstraint {
+        width.activate(priority: priority)
+        height.activate(priority: priority)
         return self
     }
 }

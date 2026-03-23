@@ -4,14 +4,13 @@ extension NSLayoutConstraint {
     
     @inline(__always)
     @discardableResult
-    public func activate() -> NSLayoutConstraint {
-        self.isActive = true
-        return self
-    }
-    
-    @inline(__always)
-    @discardableResult
-    public func activate(priority: UILayoutPriority) -> NSLayoutConstraint {
+    public func activate(priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        if let view = firstItem as? UIView {
+            view.translatesAutoresizingMaskIntoConstraints = false
+        }
+        if let view = secondItem as? UIView {
+            view.translatesAutoresizingMaskIntoConstraints = false
+        }
         self.priority = priority
         self.isActive = true
         return self
